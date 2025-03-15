@@ -22,8 +22,9 @@ set = []
 [dependencies]
 cfg-if = "^1.0"
 
-[target.'cfg(any(unix, target_os = "redox"))'.dependencies]
-libc = "^0.2"
+[target.'cfg(any(unix, target_os = "redox", target_vendor = "wasmer"))'.dependencies]
+libc = { git = "https://github.com/cristibctr/libc-0.2.169", branch = "wasix-0.2.169" }
+
 
 [target.'cfg(target_os = "windows")'.dependencies]
 windows = { version = "^0.52", features = ["Win32_Foundation", "Win32_System_SystemInformation"] }

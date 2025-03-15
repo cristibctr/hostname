@@ -2,8 +2,10 @@
 use std::ffi::OsStr;
 use std::ffi::OsString;
 use std::io;
-#[cfg(feature = "set")]
+#[cfg(all(not(target_vendor = "wasmer"), feature = "set"))]
 use std::os::unix::ffi::OsStrExt;
+#[cfg(all(target_vendor = "wasmer", feature = "set"))]
+use std::os::wasi::ffi::OsStrEx;
 use std::os::unix::ffi::OsStringExt;
 
 const _POSIX_HOST_NAME_MAX: libc::c_long = 255;

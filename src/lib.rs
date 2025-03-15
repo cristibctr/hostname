@@ -58,7 +58,7 @@ use std::ffi::OsString;
 use std::io;
 
 cfg_if! {
-    if #[cfg(any(unix, target_os = "redox"))] {
+    if #[cfg(any(unix, target_os = "redox", target_vendor = "wasmer"))] {
         mod nix;
         use crate::nix as sys;
     } else if #[cfg(target_os = "windows")] {
